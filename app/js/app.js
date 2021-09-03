@@ -200,7 +200,7 @@ function copyArrayByIndex(arr1, arr2, idx) {
     // console.log(index)
 
     for (let i = 0; i < arr2.length; i++) {
-        console.log(arr2[i])
+        // console.log(arr2[i])
     }
 
     // console.log(arr1)
@@ -211,8 +211,8 @@ function copyArrayByIndex(arr1, arr2, idx) {
     const cloneArr1 = arr1.slice()
 
 
-var array = [2, 5, 9];
-array.indexOf(2);     // 0
+    var array = [2, 5, 9];
+    array.indexOf(2);     // 0
 
     // console.log(arr1)
 
@@ -220,7 +220,9 @@ array.indexOf(2);     // 0
     // return finalArray
 }
 
+/*
 console.log(copyArrayByIndex(arr1, arr2, idx))
+*/
 
 /*******************************************************************
  *
@@ -232,7 +234,7 @@ console.log(copyArrayByIndex(arr1, arr2, idx))
  *******************************************************************/
 
 function deleteFalsy(arr) {
-     arr = [false, 0, 0n, '', "", ``, null, undefined, NaN]
+    arr = [false, 0, 0n, '', "", ``, null, undefined, NaN]
     const arr2 = [null, 1, 0, 'string', 2n, undefined, true, {name: "Andrew"}, false, '', ' ', NaN]
 
     const filteredArray = arr2.filter(i => !arr.includes(i));
@@ -242,12 +244,68 @@ function deleteFalsy(arr) {
 }
 
 /*
-
 console.log(deleteFalsy([null, 1, 0, 'string', 2n, undefined, true, {name: "Andrew"}, false, '', ' ', NaN]))
+*/
+/*******************************************************************
+ *
+ *    Написать функцию, которая на вход принимает массив,
+ *    состоящий из двух строк. Функция должна вернуть true,
+ *    если строка в первом элементе массива содержит все
+ *    буквы строки во втором элементе массива (регистр игнорируется).
+ *
+ *******************************************************************/
 
+function identicalString([str1, str2]) {
+    const arr = [str1, str2]
+
+    let testString1 = str1.toLowerCase().split('');
+    let testString2 = str2.toLowerCase().split('');
+
+
+    let filtered;
+
+    const unnecessaryElements = [' '] // избавимся от лишних знаков, в данном случае, пробела
+    testString1 = testString1.filter(i => !unnecessaryElements.includes(i));
+    testString2 = testString2.filter(i => !unnecessaryElements.includes(i));
+
+    if (arr[0].length > arr[1].length) {
+        return false + ", так как в первой строке больше элементов, чем во второй"
+    }
+
+    let reps = ''
+    for (let i = 0; i < testString1.length; i++) {
+        filtered = testString2.indexOf(testString1[i])
+        if (filtered == -1) {
+            return false + ", так как в вашей строке содержится символ, несуществующий в другой строке"
+        } else
+
+            return true
+    }
+
+}
+/*
+    console.log((identicalString(['aqerwa', 'bqwweaar'])))
 */
 
+/*******************************************************************
+ *
+ *
+ * Написать функцию, которая на вход принимает масссив и целое число.
+ * Функциядолжна разбить массив (первый аргумент) на группы длиной size
+ * (второй агрумент) и вернуть их в виде двумерного массива.
+ *
+ *
+ *******************************************************************/
 
 
+function cutToArrayOfSize(arr, size) {
+    let newArray = arr
+    let partsArray = arr.length / size;
+    console.log(partsArray)
 
 
+    return newArray
+
+}
+
+console.log(cutToArrayOfSize([1,2,3,4,5,6,7,8,9,0], 2))
