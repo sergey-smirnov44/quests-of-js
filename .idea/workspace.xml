@@ -20,18 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc03fda0-673e-4478-a222-f328f8d4c086" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/js/app.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/compress-images/2021-8-1 10.0.31 (971).txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/compress-images/2021-8-1 11.34.25 (929).txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/compress-images/2021-8-1 9.58.8 (133).txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/js/app.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/app.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +39,7 @@
         <option value="HTML4 File" />
         <option value="XHTML File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -63,6 +58,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
@@ -81,7 +77,8 @@
       <updated>1630477073960</updated>
       <workItem from="1630477075041" duration="1409000" />
       <workItem from="1630478867806" duration="5453000" />
-      <workItem from="1630485260557" duration="25962000" />
+      <workItem from="1630485260557" duration="26139000" />
+      <workItem from="1630563591563" duration="25047000" />
     </task>
     <servers />
   </component>

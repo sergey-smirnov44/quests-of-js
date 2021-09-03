@@ -46,9 +46,9 @@ function scripts() {
 
 
 
-async function images() {
+/*async function images() {
     imagecomp(
-        "app/img/src/**/*", // Берём все изображения из папки источника
+        "app/img/src/!**!/!*", // Берём все изображения из папки источника
         "app/img/dest/", // Выгружаем оптимизированные изображения в папку назначения
         {compress_force: false, statistic: true, autoupdate: true}, false, // Настраиваем основные параметры
         {jpg: {engine: "mozjpeg", command: ["-quality", "75"]}}, // Сжимаем и оптимизируем изображеня
@@ -61,7 +61,7 @@ async function images() {
             }
         }
     )
-}
+}*/
 
 function cleanimg() {
     return del('app/img/dest/**/*', {force: true}) // Удаляем все содержимое папки "app/images/dest/"
@@ -106,7 +106,7 @@ function startwatch() {
     // Выбираем все файлы JS в проекте, а затем исключим с суффиксом .min.js
     watch(['app/**/*.js', 'app/**/*.json', '!app/**/*.min.js'], scripts);
     // Мониторим папку-источник изображений и выполняем images(), если есть изменения
-    watch('app/images/src/**/*',{usePolling: true}, images);
+    // watch('app/images/src/**/*',{usePolling: true}, images);
 }
 
 function buildcopy() {
@@ -132,7 +132,7 @@ exports.scripts = scripts;
 // Экспортируем функцию styles() в таск styles
 exports.styles = styles;
 // Экспорт функции images() в таск images
-exports.images = images;
+// exports.images = images;
 // Экспортируем функцию cleanimg() как таск cleanimg
 exports.cleanimg = cleanimg;
 exports.fonts = fonts;
@@ -141,5 +141,5 @@ exports.fonts = fonts;
 // exports.default = parallel(styles, scripts, browsersync, startwatch);
 // // Создаем новый таск "build", который последовательно выполняет нужные операции
 // exports.build = series(cleandist, styles, scripts, images, buildcopy, fonts, otf2ttf, fontsStyle);
-exports.build = series(cleandist, parallel(styles, scripts, images, buildcopy,buildcopy))
-exports.default = parallel(styles, scripts, images, browsersync, startwatch);
+exports.build = series(cleandist, parallel(styles, scripts, buildcopy,buildcopy))
+exports.default = parallel(styles, scripts, browsersync, startwatch);

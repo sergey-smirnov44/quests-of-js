@@ -155,15 +155,99 @@ console.log(specificLengthofString("Разделяй и властвуй", 8))
  *******************************************************************/
 
 function changeFirstCharToUppareCase(primaryString) {
-    primaryString = primaryString.split(' ')
-    let str = ''
-    for (let i = 0; i<primaryString.length; i++)
-    {
-        str += primaryString[i][0].toUpperCase()  + primaryString[i] + " "
+    primaryString = primaryString.split('')
+    let firstChar, result
+
+    for (let i = 0; i < primaryString.length; i++) {
+        if (primaryString[i] === ' ') {
+            primaryString[i + 1] = primaryString[i + 1].toUpperCase()
+
+        }
 
     }
-    console.log(str)
-    return primaryString
+    firstChar = primaryString[0].toUpperCase()
+
+    primaryString.shift() // удаление начального элемента массива
+    primaryString.unshift(firstChar)
+    result = primaryString.join('')
+
+    return result
 }
 
+/*
 console.log(changeFirstCharToUppareCase("i mega master senior front-end and i know javascript better than anyone"))
+*/
+
+/*******************************************************************
+ *
+ *
+ *     Написать функцию, которая на вход принимает два массива
+ *     и целое число n. Функция должна скопировать каждый элемент
+ *     первого массива во второй по порядку начиная с индекса n
+ *     второго массива и вернуть полученный массив.
+ *     Входные массивы не должны изменяться. (например: при входных данных
+ *     ([1, 2, 3], [4, 5], 1) должно вернуться [4, 1, 2, 3, 5].
+ *
+ *
+ *******************************************************************/
+arr1 = [1, 2, 3, 4, 5, '🐑']
+arr2 = [66, 77, 88, 99, '🐺']
+idx = 5
+
+function copyArrayByIndex(arr1, arr2, idx) {
+    finalArray = []
+    // const index = arr1.findIndex(4);
+    // console.log(index)
+
+    for (let i = 0; i < arr2.length; i++) {
+        console.log(arr2[i])
+    }
+
+    // console.log(arr1)
+    // console.log(arra)
+
+    // const finalArray = arr2.concat(arr1)
+
+    const cloneArr1 = arr1.slice()
+
+
+var array = [2, 5, 9];
+array.indexOf(2);     // 0
+
+    // console.log(arr1)
+
+
+    // return finalArray
+}
+
+console.log(copyArrayByIndex(arr1, arr2, idx))
+
+/*******************************************************************
+ *
+ *     Написать функцию, которая на вход принимает массив
+ *     и удаляет в нем все "ложные значения"
+ *
+ *     (удаление дубликатов)
+ *
+ *******************************************************************/
+
+function deleteFalsy(arr) {
+     arr = [false, 0, 0n, '', "", ``, null, undefined, NaN]
+    const arr2 = [null, 1, 0, 'string', 2n, undefined, true, {name: "Andrew"}, false, '', ' ', NaN]
+
+    const filteredArray = arr2.filter(i => !arr.includes(i));
+
+
+    return filteredArray
+}
+
+/*
+
+console.log(deleteFalsy([null, 1, 0, 'string', 2n, undefined, true, {name: "Andrew"}, false, '', ' ', NaN]))
+
+*/
+
+
+
+
+
