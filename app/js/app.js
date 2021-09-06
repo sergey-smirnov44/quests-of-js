@@ -1,3 +1,4 @@
+// 'use strict'
 /*******************************************************************
  *
  *           Написать функцию, которая на вход принимает целое число
@@ -283,6 +284,7 @@ function identicalString([str1, str2]) {
     }
 
 }
+
 /*
     console.log((identicalString(['aqerwa', 'bqwweaar'])))
 */
@@ -301,11 +303,243 @@ function identicalString([str1, str2]) {
 function cutToArrayOfSize(arr, size) {
     let newArray = arr
     let partsArray = arr.length / size;
-    console.log(partsArray)
+    // console.log(partsArray)
 
 
     return newArray
 
 }
 
+/*
 console.log(cutToArrayOfSize([1,2,3,4,5,6,7,8,9,0], 2))
+*/
+
+
+/*******************************************************************
+ *
+ *
+ *        Написать свою реализацию функций: map, filter, find, some, every.
+ *
+ *
+ *******************************************************************/
+
+//  // ForEach
+// //arr.forEach(callback(currentValue[, index[, array]]) {
+// //   // execute something
+// // }[, thisArg]);
+//
+// let arr = [10, 11, 12, 13, , , , , , , , , , 14, 15, 61, 17, 18]
+
+
+let arr = [{1:1},1,2,3,4,,,,,6,,7,8,]
+
+Array.prototype.forEachMy = function (callback, thisArg) {
+    if (this ==  null) {
+        throw new Error ('Cant iterate is over null or undefined')
+    }
+    let context = this
+    let obj = Object(this)
+    let objLength = obj.length;
+    let i = 0;
+
+    if(arguments>1) {
+        context = thisArg
+    }
+
+    if(typeof callback !== 'function') {
+        throw new Error('Callback is not a function')
+    }
+
+    while (i < objLength) {
+        if(i in obj) {
+            callback.call(context, this[i], i, obj)
+        }
+        i++;
+    }
+}
+
+arr.forEachMy((item, index, array) => {
+    console.log({item, index})
+})
+
+
+// Filter
+
+// filter
+//arr.filter(callback(currentValue[, index[, array]]) {
+//   // execute something
+// }[, thisArg]);
+
+let array = [1,2,3,4,5,6,7];
+
+function isPrime(num) {
+    if (num <= 1) return false;
+    else if (num === 2) return true;
+    else {
+        for (let i = 2; i < num; i++)
+            if (num % i === 0) {
+                return false
+            }
+        return true
+    }
+} // function to find prime numbers
+
+Array.prototype.filterMy = function (callback, thisArg) {
+    const result = []
+    if (this === null) {
+        throw new Error('Cant iterate is over undefined or null')
+    }
+    if (typeof callback !== 'function') {
+        throw new Error('Callback is not a function')
+    }
+    let context = this;
+    let obj = Object(this)
+    let objLength = obj.length;
+    if (arguments.length > 1) {
+        context = thisArg
+    }
+    for (let i = 0; i < objLength; i++) {
+        if (i in obj) {
+            let current = this[i]
+            if (callback.call(context, current, i, obj)) {
+                result.push(current)
+            }
+        }
+    }
+    return result
+}
+/*
+let filtered = array.filterMy(isPrime)
+console.log(filtered)
+*/
+
+// map()
+//
+// let newArray = arr.map(callback(currentValue[, index[, array]]) {
+//     // return element for newArray, after executing something
+// }[, thisArg]);
+
+Array.prototype.mapMy = function (callback, thisArg) {
+    if (this == null) {
+        throw new Error('Cant iterate is over undefined or null')
+    }
+    let context = this;
+    let obj = Object(this);
+    if (arguments.length > 1) {
+        context = thisArg
+    }
+    if (typeof callback !== 'function') {
+        throw new Error('Callback is not a function')
+    }
+
+    let len = obj.length;
+    let newArray = [];
+    let i = 0; // idx
+
+    while (i < len) {
+        if (i in obj) {
+            newArray[i] = callback.call(context, this[i], i, obj)
+        }
+        i++
+    }
+    return newArray
+}
+/*
+
+console.log(array.mapMy((item) => item * 7))
+
+*/
+
+
+Array.prototype.findMy = function (callback, thisArg) {
+    if (this == null) {
+        throw new Error('Cant iterate is over undefined or null')
+    }
+    if (typeof callback !== 'function') {
+        throw new Error('Callback is not a function')
+    }
+
+    let obj = Object(this)
+    let context = this
+    let lengthObj = obj.length;
+    let i = 0
+
+    if (arguments > 1) {
+        context = thisArg
+    }
+    let firstElement = [];
+    while (i < obj.length) {
+        if (i in obj) {
+            if (callback.call(context, this[i], i, obj)) {
+                firstElement.push(this[i])
+            }
+        }
+        i++
+    }
+    return firstElement[0];
+}
+/*
+console.log(array.findMy(isPrime))
+*/
+
+Array.prototype.someMy = function (callback, thisArg) {
+    if (this == null) {
+        throw new Error('Cant iterate is over undefined or null')
+    }
+    if (typeof callback !== 'function') {
+        throw new Error('Callback is not a function')
+    }
+    let obj = Object(this)
+
+    let context = this
+    let i = 0
+    if (arguments > 1) {
+        context = thisArg
+    }
+
+    while (i < obj.length) {
+            if (i in obj) {
+                if (callback.call(context, this[i], i, obj)) {
+                    return true
+                }
+            }
+            i++
+        }
+    return false
+}
+function isLess10 (elem) {
+    return elem < 10
+}
+// console.log(array.someMy(isLess10))
+
+Array.prototype.everyMy = function (callback, thisArg) {
+    if (this == null) {
+        throw new Error('Cant iterate is over undefined or null')
+    }
+    if (typeof callback !== 'function') {
+        throw new Error('Callback is not a function')
+    }
+    let obj = Object(this)
+
+    let context = this
+    let i = 0
+    if (arguments > 1) {
+        context = thisArg
+    }
+
+    let allElem = []
+
+    while (i < obj.length) {
+
+        if (i in obj) {
+            if (callback.call(context, this[i], i, obj)) {
+                allElem.push(this[i])
+            } else return false
+        }
+        i++
+    }
+    return true
+}
+/*
+console.log(array.everyMy(isLess10))
+*/
